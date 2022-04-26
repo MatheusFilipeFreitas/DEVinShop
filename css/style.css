@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Quicksand&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+/*
+    All content
+*/
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+header {
+    background: #003f53;
+    margin-top: 3px;
+    height: 100px;
+    text-align: center;
+    line-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .title {
+    color: white;
+    font-size: 2.5rem;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    margin: 5vh auto;
+    padding: 50px;
+    gap: 20px;
+}
+
+footer {
+    width: 100;
+    text-align: center;
+    padding: 23px 0px;
+}
+
+footer hr {
+    margin-bottom: 25px;
+}
+
+
+/*
+    Table
+*/
+
+.itensList {
+    width: 100%;
+    text-align: left;
+}
+
+.itensList th {
+    height: 60px;
+    color: white;
+    background: #003f53;
+    padding-left: 15px;
+    font-size: 1.3rem;
+}
+
+.itensList td {
+    height: 50px;
+    padding-left: 20px;
+    background: #00bfff23;
+}
+
+.itensList tr:hover {
+    background: #00bfff50;
+}
+
+.itensList th:last-child,
+.itensList td:last-child {
+    padding: 0;
+    min-height: 140px;
+    text-align: center;
+}
+
+
+/*
+    Buttons
+*/
+
+.button {
+    border-style: none;
+    height: 40px;
+    padding: 6px 12px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+button.blue {
+    background: #005f95;
+}
+
+button.red {
+    background: #811915;
+}
+
+button.green {
+    background: #158D96;
+}
+
+button.home {
+    background: #00212B;
+}
+
+.button:hover {
+    box-shadow: inset 200px 0 0 #0000007A;
+}
+
+
+/*
+    Modal
+*/
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000090;
+    opacity: 0;
+    z-index: -1;
+    /*
+        Set to show:
+        opacity: 1;    
+        z-index: 1;
+    */
+}
+
+.modal.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 20vh auto;
+    padding-bottom: 20px;
+    background: white;
+}
+
+.modal-header {
+    display: flex;
+    position: relative;
+    justify-content: left;
+    padding-left: 15px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.modal-header button {
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+}
+
+.modal-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.modal-form span {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.modal-input {
+    height: 40px;
+    outline-style: none;
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.modal-input.quant {
+    width: 50px;
+    text-align: center;
+}
+
+.modal-input.prod {
+    width: 300px;
+}
+
+.modal-input:focus {
+    box-shadow: inset 500px 0px #00000011;
+}
+
+.modal-footer {
+    background: inherit;
+    text-align: right;
+    padding: 0 20px;
+}
+
+
+/*
+    Modal ADD
+*/
+
+.modal-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000090;
+    opacity: 0;
+    z-index: -1;
+    /*
+        Set to show:
+        opacity: 1;    
+        z-index: 1;
+    */
+}
+
+.modal-add.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.modal-add-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 20vh auto;
+    padding-bottom: 20px;
+    background: white;
+}
+
+.modal-add-header {
+    display: flex;
+    position: relative;
+    justify-content: left;
+    padding-left: 15px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.modal-add-header button {
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+}
+
+.modal-add-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.modal-add-input {
+    height: 40px;
+    outline-style: none;
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.modal-add-input.quant {
+    width: 70px;
+    text-align: center;
+}
+
+.modal-add-input.prod {
+    width: 300px;
+}
+
+.modal-add-input:focus {
+    box-shadow: inset 500px 0px #00000011;
+}
+
+.modal-add-footer {
+    background: inherit;
+    text-align: right;
+    padding: 0 20px;
+}
