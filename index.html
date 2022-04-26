@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- links js and css -->
+    <script src="./js/app.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Font Awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <title>DEVinHouse</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="title"> Lista de compras </h1>
+    </header>
+    <main>
+        <button type="button" class="button blue" id="addItem">
+            Adicionar Item
+        </button>
+        <table class="itensList">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Arroz</td>
+                    <td>2 Unid</td>
+                    <td>
+                        <button type="button" class="button red">
+                            <i class="fas fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Novo Produto</h2>
+                </header>
+                <form class="modal-form">
+                    <input type="text" id="modal-input" placeholder="Insira o nome do produto">
+                </form>
+                <footer class="modal-footer">
+                    <button class="button green ">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="button red">
+                        <i class="fas fa-xmark"></i>
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Developed by: Matheus Freitas - <strong>DEV in House (2022)</strong>
+    </footer>
+</body>
+
+</html>
