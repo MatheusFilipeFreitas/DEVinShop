@@ -38,10 +38,10 @@ function showItem(filter) {
             
         });
     }
-    itemBox.innerHTML = li;
+    itemBox.innerHTML = li || `<span> You don't have any item here!</span>`;
 }
 
-showItem();
+showItem('all');
 
 function deleteItem(deleteId) {
     //console.log(deleteId);

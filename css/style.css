@@ -158,6 +158,87 @@ footer hr {
 }
 
 /*
+    Modal
+*/
+
+.modal {
+    top: 30%;
+    left: 40%;
+    position: absolute;
+    max-width: 450px;
+    background: var(--primaryColorLm);
+    border-radius: 7px;
+    color: var(--fontColorLm);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal.active {
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-header {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 290px;
+}
+
+#close-btn:hover {
+    color: rgb(235, 77, 77);
+    cursor: pointer;
+}
+
+.modal-input {
+    height: 52px;
+    padding: 0 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.modal-input i {
+    position: absolute;
+    top: 50%;
+    transform: translate(17px, -50%);
+    color: var(--fontColorLm);
+}
+
+.modal-input input {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0 20px 0 53px;
+    border: 2px solid var(--borderColorLm);
+    outline: none;
+    color: var(--fontColorLm);
+    background-color: var(--primaryColorLm);
+}
+
+.modal-input input::placeholder {
+    color: var(--borderColorLm);
+}
+
+/*
+    Button
+*/
+
+.ok-btn {
+    margin-left: 200px;
+}
+
+.controls .ok-btn {
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 7px 13px;
+    background: var(--primaryColor);
+}
+
+/*
     Content
 */
 
