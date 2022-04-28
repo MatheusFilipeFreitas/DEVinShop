@@ -1,102 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- links js and css -->
     <script src="./js/app.js" defer></script>
     <link rel="stylesheet" href="./css/style.css">
+
+        <!-- Font Poppins -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 
     <!-- Font Awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <title>DEVinHouse</title>
+    <title>DevInHouse</title>
 </head>
-
 <body>
     <header>
-        <h1 class="title"> Lista de compras </h1>
+        <div class="header-container">
+            <i class="fa-solid fa-bars" id="hamburguer"></i>
+            <span> DEVinShop </span>
+            <i class="fa-solid fa-bell"></i>
+            <div class="user-settings">
+                <i class="fa-solid fa-user"></i>
+                <ul class="user-menu">
+                    <li> <i class="fa-solid fa-gear"></i>Settings</li>
+                    <li> <i class="fa-solid fa-moon"></i>Dark mode </li>
+                    <li> <i class="fa-solid fa-arrow-right-from-bracket"></i>Exit </li>
+                </ul>
+            </div>
+        </div>
     </header>
-    <main>
-        <h2 class="price-total">TOTAL: R$ 0.00</h2>
-        <button type="button" class="button blue" id="addItem">
-            Adicionar Item
-        </button>
-        <table class="itensList">
-            <thead>
-                <tr>
-                    <th>Unit</th>
-                    <th>Produto</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>Arroz</td>
-                    <td>
-                        <button type="button" class="button blue" id="btn-check">
-                            <i class="fas fa fa-check"></i>
-                        </button>
-                        <button type="button" class="button red">
-                            <i class="fas fa fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="modal" id="edit-modal">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h2 id="att-prod">Preço do Arroz</h2>
-                    <button class="button home" id="close-modal">
-                        <i class="fa-solid fa-house"></i>
-                    </button>
-                </header>
-                <form class="modal-form">
-                    <span>R$:</span>
-                    <input type="number" class="modal-input price" placeholder="0.00">
-                </form>
-                <footer class="modal-footer">
-                    <button class="button green">
-                        <i class="fas fa-check"></i>
-                    </button>
-                    <button class="button red">
-                        <i class="fas fa-xmark"></i>
-                    </button>
-                </footer>
-            </div>
+    <div class="container-total">
+        <div class="content-total">
+            <p id="total">Total: 0,00</p>
         </div>
-        <div class="modal-add" id="add-modal">
-            <div class="modal-add-content">
-                <header class="modal-add-header">
-                    <h2>Novo Produto</h2>
-                    <button class="button home" id="close-modal-add">
-                        <i class="fa-solid fa-house"></i>
-                    </button>
-                </header>
-                <form class="modal-add-form">
-                    <input type="number" class="modal-add-input quant" placeholder="Un">
-                    <input type="text" class="modal-add-input prod" placeholder="Insira o nome do produto">
-                </form>
-                <footer class="modal-add-footer">
-                    <button class="button green ">
-                        <i class="fas fa-check"></i>
-                    </button>
-                    <button class="button red">
-                        <i class="fas fa-xmark"></i>
-                    </button>
-                </footer>
-            </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="item-input">
+            <i class="fa-solid fa-arrow-up-1-9"></i>
+            <input class="quant" type="number" placeholder="Add a quantity">
         </div>
-    </main>
+        <div class="item-input">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <input class="prod" type="text" placeholder="Add a new item">
+        </div>
+        <div class="controls">
+            <div class="filters">
+                <span id="all" class="active">All</span>
+                <span id="pending">Pending</span>
+                <span id="bought">Bought</span>
+            </div>
+            <button class="clear-btn">Clear All</button>
+        </div>
+        <ul class="item-box"></ul>
+    </div>
+
     <footer>
         <hr>
-        <span>Developed by: <strong>Matheus Freitas</strong> - 2022</span>
+        <span>Development by: <strong> Matheus Filipe Freitas</strong> - 2022 </span>
     </footer>
 </body>
-
 </html>
