@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="./js/app.js" defer></script>
+    <script src="./lib/quagga.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 
-        <!-- Font Poppins -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <!-- Font Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 
     <!-- Font Awsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>DevInHouse</title>
 </head>
-<body>
 
+<body onload=getColorMode()>
+
+    <!-- Header -->
     <header>
         <div class="header-container">
             <i class="fa-solid fa-bars" id="hamburguer"></i>
@@ -28,20 +33,23 @@
             <div class="user-settings">
                 <i class="fa-solid fa-user"></i>
                 <ul class="user-menu">
-                    <li> <i class="fa-solid fa-gear"></i>Settings</li>
-                    <li> <i class="fa-solid fa-moon"></i>Dark mode </li>
-                    <li> <i class="fa-solid fa-arrow-right-from-bracket"></i>Exit </li>
+                    <li id="settings-menu"> <i class="fa-solid fa-gear"></i>Settings</li>
+                    <li id="light-mode" class="active-mode"><i class="fa-solid fa-sun"></i>Light mode </li>
+                    <li id="dark-mode"> <i class="fa-solid fa-moon"></i>Dark mode </li>
+                    <li id="exit-menu"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Exit </li>
                 </ul>
             </div>
         </div>
     </header>
 
+    <!-- Total -->
     <div class="container-total">
         <div class="content-total">
             <p id="total">Total: 0,00</p>
         </div>
     </div>
-    
+
+    <!-- Main content -->
     <div class="wrapper">
         <div class="item-input">
             <i class="fa-solid fa-arrow-up-1-9"></i>
@@ -51,40 +59,96 @@
             <i class="fa-solid fa-bars-staggered"></i>
             <input class="prod" type="text" placeholder="Add a new item">
         </div>
+        <div class="text-obs">
+            <p>OBS:</p>
+            <p>When inserted the item name, press "Enter" to add!</p>
+        </div>
+        
         <div class="controls">
             <div class="filters">
                 <span id="all" class="active">All</span>
                 <span id="pending">Pending</span>
                 <span id="bought">Bought</span>
             </div>
+            <i class="fa-solid fa-barcode" id="barcode" onclick=modalBarcodeCall()></i>
             <button class="clear-btn">Clear All</button>
         </div>
         <ul class="item-box"></ul>
     </div>
 
+    <!-- Modal -->
     <div class="modal">
         <div class="modal-header">
-            <i class="fa-solid fa-x" id="close-btn"></i>
+            <i class="fa-solid fa-x" id="close-btn" onclick=closeModal()></i>
         </div>
+        <p class="text-input">If you want to change your item quantity! (Not required)</p>
         <div class="modal-input">
             <i class="fa-solid fa-arrow-up-1-9"></i>
-            <input class="quant" type="number" placeholder="Add a quantity">
+            <input class="quant-modal" type="number" placeholder="ex: 2 (not required)">
         </div>
+        <p class="text-input">Set a price for your item! (Required)</p>
         <div class="modal-input">
             <i class="fa-solid fa-dollar-sign"></i>
-            <input class="price" type="text" placeholder="Add a price">
+            <input class="price-modal" type="text" placeholder="ex: 5.10" required>
         </div>
         <div class="controls">
-            <button class="ok-btn"> 
+            <button class="ok-btn" onclick=priceChange()>
                 <i class="fa-solid fa-check"></i>
             </button>
         </div>
     </div>
 
+    <!-- Modal Bar Code -->
 
+    <div class="modal-barcode">
+        <div class="modal-barcode-header">
+            <i class="fa-solid fa-x" id="close-btn-barcode" onclick=closeModalBarcode()></i>
+        </div>
+        <p id="modal-barcode-text">Show your item bar code</p>
+        <div id="cam"></div>
+        <div class="content-result">
+            <p>Your result is: </p>
+            <div id="result"></div>
+        </div>   
+        <button id="confirm-barcode" onclick=addByBarcode()>
+            <i class="fa-solid fa-check"></i>
+        </button>    
+    </div>
+
+    <!-- Footer -->
     <footer>
         <hr>
         <span> Developed by: <strong> Matheus Filipe Freitas</strong> - 2022 </span>
     </footer>
+
+
+    <!-- Bar code reader-->
+    <script>
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: document.querySelector('#cam')    // Or '#yourElement' (optional)
+            },
+            decoder: {
+                readers: ["code_128_reader"]
+            }
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                return
+            }
+            console.log("Initialization finished. Ready to start");
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function (data){
+            //console.log(data);
+
+            document.querySelector('.modal-barcode #result').innerHTML = data.codeResult.code;
+        })
+
+    </script>
 </body>
+
 </html>

@@ -1,26 +1,29 @@
+/*
+    Variables
+*/
 
 :root {
-    /* 
-        General
-    */
-    --primaryColor: #276FBF;
-    /*
-        Light Mode
-    */
-    --primaryColorLm: #FFFFFF;
-    --backgroundColorLm: #00000027;
-    --borderColorLm: #888888;
-    --borderItemColorLm: #CCCCCC;
-    --fontColorLm: #000000;
-    /*
-        Dark Mode
-    */
-    --primaryColorDm: #141d24;
-    --backgroundColorDm: #232F38;
-    --borderColorDm: #3D3D3D;
-    --borderItemColorDm: #9B9A9A;
-    --fontColorDm: #FFFFFF;
+    --primaryColor: #15539B;
+    --secundaryColor: #FFFFFF;
+    --thirdColor: #0B70E4D8;
+    --backgroundColor: #00000027;
+    --borderColor: #888888;
+    --borderItemColor: #CCCCCC;
+    --fontColor: #000000;
+    --placeholder: #000000AD;
+}    
+
+.dark-mode-changed {
+    --primaryColor: #15539b;
+    --secundaryColor: #141d24;
+    --thirdColor: #0B70E4D8;
+    --backgroundColor: #232F38;
+    --borderColor: #777676;
+    --borderItemColor: #9B9A9A;
+    --fontColor: #FFFFFFD2;
+    --placeholder: #FFFFFFAD;
 }
+
 
 /*
     Geral
@@ -35,8 +38,12 @@
 }
 
 body {
-   background: var(--backgroundColorLm);
+   background: var(--backgroundColor);
    overflow: hidden;
+}
+
+.active-mode {
+    display: none;
 }
 
 /* 
@@ -51,7 +58,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 25px;
-    color: #FFFFFF;
+    color: var(--secundaryColor);
     font-weight: bold;
 }
 
@@ -82,7 +89,7 @@ body {
 }
 
 .user-settings .user-menu {
-    color: var(--fontColorLm);
+    color: var(--fontColor);
     position: absolute;
     padding: 10px 20px;
     z-index: 2;
@@ -90,7 +97,7 @@ body {
     bottom: -105px;
     transform: scale(0);
     border-radius: 5px;
-    background: var(--primaryColorLm);
+    background: var(--secundaryColor);
     transform-origin: top right;
     transition: transform 0.2s ease;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
@@ -105,7 +112,7 @@ body {
     height: 30px;
     margin-bottom: 10px;
     justify-content: flex-start;
-    border-bottom: 1px solid var(--borderColorLm);
+    border-bottom: 1px solid var(--borderColor);
 }
 
 .user-menu li:last-child {
@@ -128,11 +135,11 @@ footer {
     text-align: center;
     width: 100%;
     position: absolute;
-    background: var(--primaryColorLm);
+    background: var(--secundaryColor);
     padding-top: 5px;
     padding-bottom: 45px;
     bottom: 0;
-    color: var(--fontColorLm);
+    color: var(--fontColor);
 }
 
 footer hr {
@@ -152,7 +159,7 @@ footer hr {
 }
 
 .content-total p{
-    color: var(--primaryColor);
+    color: var(--thirdColor);
     font-size: 2rem;
     font-weight: bold;
 }
@@ -161,28 +168,35 @@ footer hr {
     Modal
 */
 
+.text-input {
+    text-align: center;
+    font-weight: bold;
+    width: 300px;
+    margin: 15px;
+    color: var(--fontColor)
+}
+
 .modal {
     top: 30%;
     left: 40%;
     position: absolute;
     max-width: 450px;
-    background: var(--primaryColorLm);
+    background: var(--secundaryColor);
     border-radius: 7px;
     color: var(--fontColorLm);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
-    opacity: 0;
-    z-index: -1;
+    display: none;
 }
 
-.modal.active {
-    opacity: 0;
-    z-index: -1;
-}
 
 .modal-header {
     margin-top: 5px;
     margin-bottom: 20px;
-    margin-left: 290px;
+    margin-left: 320px;
+}
+
+#close-btn {
+    color: var(--fontColor);
 }
 
 #close-btn:hover {
@@ -195,13 +209,14 @@ footer hr {
     padding: 0 25px;
     position: relative;
     margin-bottom: 10px;
+    color: var(--fontColor);
 }
 
 .modal-input i {
     position: absolute;
     top: 50%;
     transform: translate(17px, -50%);
-    color: var(--fontColorLm);
+    color: var(--fontColor);
 }
 
 .modal-input input {
@@ -209,22 +224,107 @@ footer hr {
     width: 100%;
     border-radius: 5px;
     padding: 0 20px 0 53px;
-    border: 2px solid var(--borderColorLm);
+    border: 2px solid var(--borderColor);
     outline: none;
     color: var(--fontColorLm);
-    background-color: var(--primaryColorLm);
+    background-color: var(--secundaryColor);
 }
 
 .modal-input input::placeholder {
-    color: var(--borderColorLm);
+    color: var(--borderColor);
 }
+
+/*
+    Modal Barcode
+
+*/
+
+.modal-barcode{
+    top: 17%;
+    left: 37%;
+    position: absolute;
+    max-width: 500px;
+    height: 500px;
+    background: var(--secundaryColor);
+    border-radius: 7px;
+    color: var(--fontColorLm);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
+    display: none;
+}
+
+.modal-barcode-header{
+    margin-top: 5px;
+    margin-left: 455px;
+}
+
+#cam {
+    margin: 15px;
+    width: 450px; 
+    height: 300px;
+}
+
+#cam video{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
+}
+
+.content-result {
+    width: 100%;
+    margin-top: 5px;
+    position: absolute;
+    color: var(--fontColor);
+    text-align: center;
+}
+
+#result {
+    font-weight: bold;
+}
+
+#modal-barcode-text {
+    color: var(--fontColor);
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#close-btn-barcode {
+    color: var(--fontColor);
+}
+
+#close-btn-barcode:hover {
+    color: rgb(235, 77, 77);
+    cursor: pointer;
+}
+
+#confirm-barcode {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+    padding: 2px 10px;
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    background: var(--thirdColor);
+}
+
+#confirm-barcode:hover {
+    background: #083f7ed8;
+}
+
 
 /*
     Button
 */
 
 .ok-btn {
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .controls .ok-btn {
@@ -235,7 +335,11 @@ footer hr {
     font-weight: bold;
     border-radius: 4px;
     padding: 7px 13px;
-    background: var(--primaryColor);
+    background: var(--thirdColor);
+}
+
+.controls .ok-btn:hover {
+    background: #083f7ed8;
 }
 
 /*
@@ -245,10 +349,19 @@ footer hr {
 .wrapper {
     max-width: 450px;
     margin: 135px auto;
-    background: var(--primaryColorLm);
+    background: var(--secundaryColor);
     border-radius: 7px;
     padding: 28px 0;
-    color: var(--fontColorLm)
+    color: var(--fontColor)
+}
+
+.text-obs {
+    text-align: center;
+}
+
+#barcode:hover {
+    color: var(--thirdColor);
+    cursor: pointer;
 }
 
 /*
@@ -266,7 +379,7 @@ footer hr {
     position: absolute;
     top: 50%;
     transform: translate(17px, -50%);
-    color: var(--fontColorLm);
+    color: var(--fontColor);
 }
 
 .item-input input {
@@ -274,14 +387,14 @@ footer hr {
     width: 100%;
     border-radius: 5px;
     padding: 0 20px 0 53px;
-    border: 2px solid var(--borderColorLm);
+    border: 2px solid var(--borderColor);
     outline: none;
     color: var(--fontColorLm);
-    background-color: var(--primaryColorLm);
+    background-color: var(--secundaryColor);
 }
 
 .item-input input::placeholder {
-    color: var(--borderColorLm);
+    color: var(--borderColor);
 }
 
 /*
@@ -296,7 +409,7 @@ footer hr {
 
 .controls {
     padding: 18px 25px;
-    border-bottom: 1px solid var(--borderColorLm);
+    border-bottom: 1px solid var(--borderColor);
 }
 
 .filters span {
@@ -310,7 +423,8 @@ footer hr {
 }
 
 .filters span.active {
-    color: var(--primaryColor);
+    color: var(--thirdColor);
+    font-weight: bold;
 }
 
 .controls .clear-btn {
@@ -321,7 +435,7 @@ footer hr {
     font-weight: bold;
     border-radius: 4px;
     padding: 7px 13px;
-    background: var(--primaryColor);
+    background: var(--thirdColor);
 }
 
 /*
@@ -338,7 +452,7 @@ footer hr {
     font-weight: bold;
     margin-bottom: 18px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--borderItemColorLm);
+    border-bottom: 1px solid var(--borderItemColor);
 }
 
 .item-box .item:last-child {
@@ -378,7 +492,7 @@ footer hr {
     bottom: -70px;
     transform: scale(0);
     border-radius: 5px;
-    background: var(--primaryColorLm);
+    background: var(--secundaryColor);
     transform-origin: top right;
     transition: transform 0.2s ease;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
