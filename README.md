@@ -12,8 +12,8 @@
 <br>
 OBS:
 <br>
-- The library used for barcode reader is QuaggaJS. [link for the website](https://serratus.github.io/quaggaJS/)
-- Site used for generate barcodes: [link](https://barcode.tec-it.com/en/)
+<p>The library used for barcode reader is QuaggaJS. [link for the website](https://serratus.github.io/quaggaJS/).</p>
+<p>Site used for generate barcodes: [link](https://barcode.tec-it.com/en/).</p>
 
 ## Introduction
 
