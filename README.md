@@ -11,6 +11,7 @@
 </div>
 <br>
 OBS:
+<br>
 - The library used for barcode reader is QuaggaJS. [link for the website](https://serratus.github.io/quaggaJS/)
 - Site used for generate barcodes: [link](https://barcode.tec-it.com/en/)
 
