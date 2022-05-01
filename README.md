@@ -43,7 +43,7 @@
 
 
 
-![akt text](D:\webProjects\DevInHouse\img\documentation\6.png)
+![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/6.png)
 
 
 
@@ -57,11 +57,11 @@
 
   
 
-  ![akt text](D:\webProjects\DevInHouse\img\documentation\1(default).png)
+  ![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/1(default).png)
 
   
 
-  ![akt text](D:\webProjects\DevInHouse\img\documentation\1.png)
+  ![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/1.png)
 
   
 
@@ -69,17 +69,17 @@
 
   
 
-  ![akt text](D:\webProjects\DevInHouse\img\documentation\2(default).png)
+  ![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/2(default).png)
 
   
 
-  ![akt text](D:\webProjects\DevInHouse\img\documentation\2.png)
+  ![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/2.png)
 
 
 
 ​	If you click the top list icon, will appear an responsive side navigation bar.
 
-​		![akt text](D:\webProjects\DevInHouse\img\documentation\4.png)
+​		![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/4.png)
 
 
 
@@ -97,7 +97,7 @@
 
 
 
-![akt text](D:\webProjects\DevInHouse\img\documentation\7.png)
+![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/7.png)
 
 
 
@@ -107,7 +107,7 @@
 
 
 
-![akt text](D:\webProjects\DevInHouse\img\documentation\8.png)
+![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/8.png)
 
 
 
