@@ -1,6 +1,10 @@
 // Selectors
+const hamburguer = document.getElementById('hamburguer');
+const sidebar = document.querySelector('.sidebar');
 
-const clearAll = document.querySelector('.clear-btn');
+const result = document.querySelector('#result');
+const filters = document.querySelectorAll('.filters span');
+const itemBox = document.querySelector('.item-box');
 
 const quantInput = document.querySelector('.item-input .quant'); 
 const itemInput = document.querySelector('.item-input .prod');
@@ -8,13 +12,14 @@ const itemInput = document.querySelector('.item-input .prod');
 const quantModalInput = document.querySelector('.quant-modal');
 const priceModalInput = document.querySelector('.price-modal');
 
-const filters = document.querySelectorAll('.filters span');
-
-const itemBox = document.querySelector('.item-box');
-
-const result = document.querySelector('#result');
+const clearAll = document.querySelector('.clear-btn');
 
 //  Events
+
+hamburguer.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+})
+
 
 clearAll.addEventListener('click', () => {
     itens.splice(0, itens.length);
@@ -48,13 +53,18 @@ itemInput.addEventListener('keyup', e => {
 
 //  Ester eggs
 
-const hamburguer = document.getElementById('hamburguer');
+const recomendations = document.getElementById('nav-recomendations');
+const history = document.getElementById('nav-history');
+
 const exitBtn = document.getElementById('exit-menu');
 const settingsBtn = document.getElementById('settings-menu');
 
-hamburguer.addEventListener('click', () => {
-    alert(' *SHOW BEAUTIFUL MENU* ');
-    alert(' Sorry this is not finished yet! Try later.');
+recomendations.addEventListener('click', () => {
+    alert('We don\'t have any recomendations yet!');
+});
+
+history.addEventListener('click', () => {
+    alert('We are working on this page right now! ;)');
 })
 
 exitBtn.addEventListener('click', () => {
@@ -137,7 +147,7 @@ function showItem(filter) {
                 li += `<li class="item">
                 <label for="${id}">
                     <input onchange="updatePrice(this)" type="checkbox" id="${id}" ${isCompleted}>
-                    <p class="${isCompleted}">Un. ${item.un} - ${item.name} - R$ ${item.price}/un - (R$ ${item.price * item.un})</p>
+                    <p class="${isCompleted}">Un. ${item.un} - ${item.name} : R$ ${item.price}/un (R$ ${item.price * item.un})</p>
                 </label>
                 <div class="settings">
                     <i onclick="showConfirm(this)" class="fa-solid fa-delete-left"></i>

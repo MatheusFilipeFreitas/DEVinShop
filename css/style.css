@@ -4,7 +4,7 @@
 
 :root {
     --primaryColor: #15539B;
-    --secundaryColor: #FFFFFF;
+    --secundaryColor: #ffffff;
     --thirdColor: #0B70E4D8;
     --backgroundColor: #00000027;
     --borderColor: #888888;
@@ -40,6 +40,10 @@
 body {
    background: var(--backgroundColor);
    overflow: hidden;
+   position: relative;
+   height: 100vh;
+   width: 100vw;
+   overflow: hidden;
 }
 
 .active-mode {
@@ -56,6 +60,7 @@ body {
     height: 8vh;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     align-items: center;
     padding: 25px;
     color: var(--secundaryColor);
@@ -65,18 +70,31 @@ body {
 .header-container span {
     font-size: 1.4rem;
     font-weight: bold;
-    margin-right: 80vw;
+    margin-right: 75%;
 }
 
 .header-container i {
     cursor: pointer;
 }
 
+.fa-solid .fa-bars .active-hamburger {
+    color: var(--fontColor);
+}
+
 /*
     User Menu
 */
 
+.user-config {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .user-settings {
+    width: 100px;
     cursor: pointer;
     font-weight: bold;
     position: relative;
@@ -93,7 +111,7 @@ body {
     position: absolute;
     padding: 10px 20px;
     z-index: 2;
-    right: -4px;
+    right: 83px;
     bottom: -105px;
     transform: scale(0);
     border-radius: 5px;
@@ -127,11 +145,129 @@ body {
     padding-right: 8px;
 }
 
+.nav-active {
+    background-color: var(--primaryColor);
+    pointer-events: none;
+}
+
+.nav-active span,
+.nav-active i {
+    color: white;
+}
+
+/*
+    Navigation Menu
+*/
+
+.sidebar {
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+    height: 100%;
+    width: 0px;
+    background: var(--secundaryColor);
+    color: var(--fontColor);
+    transition: width 1s ease;
+    pointer-events: none;
+    border-right: 1px solid #0000003a;
+}
+
+.sidebar.active {
+    transition: width 1s ease;
+    z-index: 1;
+    width: 240px;
+    pointer-events: auto;
+}
+
+.sidebar .user-info {
+    font-weight: bold;
+    opacity: 0;
+    z-index: -1;
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--borderColor);
+    transition: all 0.3s ease;
+}
+
+.sidebar.active .user-info {
+    opacity: 1;
+    z-index: 1;
+    transition: all 5s ease;
+}
+
+
+.sidebar .user-info #user-image {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sidebar .user-info span {
+    margin-top: 15px;
+}
+
+.sidebar .sidebar-list {
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.2s ease;
+}
+
+.sidebar.active .sidebar-list {
+    opacity: 1;
+    z-index: 1;
+    transition: all 4s ease;
+}
+
+.sidebar ul {
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    list-style: none;
+    line-height: 70px;
+    margin-top: 15px;
+}
+
+.sidebar ul li a {
+    color: var(--fontColor);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    padding-left: 25px;
+}
+
+.sidebar ul li a:hover{
+    color: white;
+    background: var(--primaryColor);
+}
+
+.sidebar ul li a i {
+    height: 70px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 70px;
+    padding-left: 15px;
+}
+
+
 /*
     Footer
 */
 
 footer {
+    z-index: 2;
+    opacity: 1;
     text-align: center;
     width: 100%;
     position: absolute;
@@ -155,7 +291,7 @@ footer hr {
     display: flex;
     justify-content: center;
     position: absolute;
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 .content-total p{
@@ -348,7 +484,7 @@ footer hr {
 
 .wrapper {
     max-width: 450px;
-    margin: 135px auto;
+    margin: 130px auto;
     background: var(--secundaryColor);
     border-radius: 7px;
     padding: 28px 0;
@@ -467,6 +603,7 @@ footer hr {
 
 .item label p.checked {
     text-decoration: line-through;
+    color: var(--fontColor);
 }
 
 .item label input {

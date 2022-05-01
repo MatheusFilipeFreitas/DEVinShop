@@ -28,19 +28,53 @@
     <header>
         <div class="header-container">
             <i class="fa-solid fa-bars" id="hamburguer"></i>
-            <span> DEVinShop </span>
-            <i class="fa-solid fa-bell"></i>
-            <div class="user-settings">
-                <i class="fa-solid fa-user"></i>
-                <ul class="user-menu">
-                    <li id="settings-menu"> <i class="fa-solid fa-gear"></i>Settings</li>
-                    <li id="light-mode" class="active-mode"><i class="fa-solid fa-sun"></i>Light mode </li>
-                    <li id="dark-mode"> <i class="fa-solid fa-moon"></i>Dark mode </li>
-                    <li id="exit-menu"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Exit </li>
-                </ul>
+            <span> DEVinShop</span>
+            <div class="user-config">
+                <i class="fa-solid fa-bell"></i>
+                <div class="user-settings">
+                    <i class="fa-solid fa-user"></i>
+                    <ul class="user-menu">
+                        <li id="settings-menu"> <i class="fa-solid fa-gear"></i>Settings</li>
+                        <li id="light-mode" class="active-mode"><i class="fa-solid fa-sun"></i>Light mode </li>
+                        <li id="dark-mode"> <i class="fa-solid fa-moon"></i>Dark mode </li>
+                        <li id="exit-menu"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Exit </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+        <div class="user-info">
+            <i class="fa-solid fa-circle-user fa-5x" id="user-image"></i>
+            <span class="username">User Name</span>
+            <span class="user-type">Premium</span>
+        </div>
+        <div class="sidebar-list">
+            <ul class="nav-list">
+                <li>
+                    <a id="nav-recomendations" href="#">
+                        <i class="fa-solid fa-hand-holding"></i>
+                        <span>Recomendations</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="nav-itens-list" class="nav-active">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Itens List</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="nav-history" href="#">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>History of Lists</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Total -->
     <div class="container-total">
@@ -53,11 +87,11 @@
     <div class="wrapper">
         <div class="item-input">
             <i class="fa-solid fa-arrow-up-1-9"></i>
-            <input class="quant" type="number" placeholder="Add a quantity">
+            <input class="quant" type="number" placeholder="Add a quantity (No required)">
         </div>
         <div class="item-input">
             <i class="fa-solid fa-bars-staggered"></i>
-            <input class="prod" type="text" placeholder="Add a new item">
+            <input class="prod" type="text" placeholder="Add a new item (Required)">
         </div>
         <div class="text-obs">
             <p>OBS:</p>
@@ -124,7 +158,7 @@
 
     <!-- Bar code reader-->
     <script>
-        Quagga.init({
+            Quagga.init({
             inputStream: {
                 name: "Live",
                 type: "LiveStream",
