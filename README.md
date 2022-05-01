@@ -1,61 +1,181 @@
-// Selectors
-const hamburguer = document.getElementById('hamburguer');
-const sidebar = document.querySelector('.sidebar');
+# Dev In Shop
 
-const result = document.querySelector('#result');
-const filters = document.querySelectorAll('.filters span');
-const itemBox = document.querySelector('.item-box');
+## _Website using JavaScript, HTML, CSS_
 
-const quantInput = document.querySelector('.item-input .quant'); 
-const itemInput = document.querySelector('.item-input .prod');
+[![N|Solid](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MatheusFilipeFreitas)
 
-const quantModalInput = document.querySelector('.quant-modal');
-const priceModalInput = document.querySelector('.price-modal');
+<div style="display: inline_block"><br>
+  <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+</div>
 
-const clearAll = document.querySelector('.clear-btn');
 
-//  Events
 
+## Introduction
+
+- Looking and user functionalities 
+  - Site looking
+  - Themes
+  - Product List (functionalities)
+- Programming section
+  - item object
+  - events
+  - themes
+  - filters
+  - total
+  - modals
+  - functions
+  - ester eggs 
+  - barcode init
+
+
+
+## Looking and user functionalities 
+
+### Site looking
+
+​	_OBS:_ The site uses your camera to read and auto add an item to your list. For this functionality works, please give permission for using the camera.  
+
+​	You can change the theme at user-menu. Just put your mouse at the user icon.
+
+![akt text](D:\webProjects\DevInHouse\img\documentation\5.png)
+
+
+
+![akt text](D:\webProjects\DevInHouse\img\documentation\6.png)
+
+
+
+<hr>
+
+### Themes
+
+
+
+- **Dark Mode:**
+
+  
+
+  ![akt text](D:\webProjects\DevInHouse\img\documentation\1(default).png)
+
+  
+
+  ![akt text](D:\webProjects\DevInHouse\img\documentation\1.png)
+
+  
+
+- **Light Mode:**
+
+  
+
+  ![akt text](D:\webProjects\DevInHouse\img\documentation\2(default).png)
+
+  
+
+  ![akt text](D:\webProjects\DevInHouse\img\documentation\2.png)
+
+
+
+​	If you click the top list icon, will appear an responsive side navigation bar.
+
+​		![akt text](D:\webProjects\DevInHouse\img\documentation\4.png)
+
+
+
+<hr>
+
+### Products list
+
+​	Insert the quantity and the item's name and press enter to add the item to the list.
+
+​	The filters show's your items per status. (For any item filtered as "Bought" is required an price, you can add the price of your item, checking the checkbox after the item description).
+
+​	You can delete any item you want by pressing the delete button.
+
+​	To delete all items, click the button "Clear all".
+
+
+
+![akt text](D:\webProjects\DevInHouse\img\documentation\7.png)
+
+
+
+​	By clicking the barcode icon, you activate the barcode reader (this function add a new item to your list, by reading the item`s barcode. You have examples for trying at:
+
+`.\img\barcode\`
+
+
+
+![akt text](D:\webProjects\DevInHouse\img\documentation\8.png)
+
+
+
+When the result appears, click the check button to add the item. 
+
+
+
+## Programming Section
+
+- item object
+- events
+- themes
+- filters
+- total
+- modals
+- functions
+- ester eggs 
+- barcode init
+
+### item object
+
+`userItem` (itemInput.value);
+
+`userQuant`(quantInput.value);
+
+```javascript
+let itemInfo = {name: userItem, un: userQuant, status:'pending', price: 0.00};
+```
+
+### events
+
+Sidebar navigation.
+
+```javascript
 hamburguer.addEventListener('click', () => {
     sidebar.classList.toggle('active');
 });
+```
 
 
+
+Clear all button.
+
+```javascript
 clearAll.addEventListener('click', () => {
     itens.splice(0, itens.length);
     localStorage.setItem('item-list', JSON.stringify(itens));
     showItem('all');
     showTotal();
 });
+```
 
-itemInput.addEventListener('keyup', e => {
-    let userItem = itemInput.value.trim();
-    let userQuant = quantInput.value.trim();
-    if(e.key == 'Enter' && userItem){
-        if(userQuant > 0){
-            //console.log(userItem);
-            if(!itens){
-                itens = [];
-            }
-            itemInput.value = '';
-            quantInput.value = '';
-        
-            let itemInfo = {name: userItem, un: userQuant, status:'pending', price: 0.00};
-            itens.push(itemInfo);
-            localStorage.setItem('item-list', JSON.stringify(itens));
-            showItem('all');
-            showTotal();
-        }else{
-            alert ('Invalid quantity!')
-        }
-    }
-});
 
-//  Color Modes
 
+### themes
+
+Selectors.
+
+```javascript
 const lightMode = document.querySelector('#light-mode')
 const darkMode = document.querySelector('#dark-mode');
+```
 
+
+
+Dark Mode.
+
+```javascript
 darkMode.addEventListener('click', () => {
     //console.log('dm');
     
@@ -66,7 +186,13 @@ darkMode.addEventListener('click', () => {
     colorMode = localStorage.setItem('color', 'dark');
 
 });
+```
 
+
+
+Light Mode.
+
+```javascript
 lightMode.addEventListener('click', () => {
     
     lightMode.classList.add('active-mode');
@@ -77,9 +203,13 @@ lightMode.addEventListener('click', () => {
     colorMode = localStorage.setItem('color', 'light');
 
 });
+```
 
-// On Load stay Color Mode Selected
 
+
+Stay on load theme selected.
+
+```javascript
 let colorMode = localStorage.getItem('color')
 function getColorMode() {
     if(!colorMode){
@@ -97,11 +227,21 @@ function getColorMode() {
     }
     
 }
+```
 
-// Filters
 
+
+### filters
+
+Selector.
+
+```javascript
 let itens = JSON.parse(localStorage.getItem('item-list'));
+```
 
+Active mode class for CSS.
+
+```javascript
 filters.forEach(btn => {
     btn.addEventListener('click', () => {
         //console.log(btn);
@@ -110,9 +250,11 @@ filters.forEach(btn => {
         showItem(btn.id);
     })
 });
+```
 
-//  Show Itens
+Show items per filter activated.
 
+```javascript
 function showItem(filter) {
     let li = '';
     if(itens){
@@ -139,7 +281,15 @@ function showItem(filter) {
     }
     itemBox.innerHTML = li || `<span> You don't have any item here!</span>`;
 }
+```
 
+
+
+### total
+
+Show total on screen.
+
+```javascript
 function showTotal(){
     let soma = 0;
     let tam = 0;
@@ -153,26 +303,21 @@ function showTotal(){
     itensTotal.innerText = `un. ${tam}`;
     return total.innerText = `Total: R$ ${soma.toFixed(2)}`;
 }
+```
 
-showTotal();
 
-showItem('all');
 
-function showConfirm(selectedItem){
-    //console.log(selectedItem);
-    let itemMenu = selectedItem.parentElement.lastElementChild;
-    itemMenu.classList.add('show');
-    document.addEventListener('click', e => {
-        if(e.target.tagName != 'I' || e.target != selectedItem) {
-            itemMenu.classList.remove('show')
-        }
-    });
-}
+### modals
 
-// Modal calls
+Global variable (get the selectedItem id).
 
+```javascript
 let selected = 0; //used for taking the selectedItem.id
+```
 
+Open edit modal (checkbox modal).
+
+```javascript
 function modalCall(selectedItem){
     //console.log(selectedItem);
     let modal = document.querySelector('.modal');
@@ -180,7 +325,11 @@ function modalCall(selectedItem){
     selected = selectedItem.id;
     //console.log(selected);
 }
+```
 
+Close edit modal (checkbox modal).
+
+```javascript
 function closeModal (){
     let modal = document.querySelector('.modal');
     let check = document.getElementById(`${selected}`);
@@ -192,22 +341,61 @@ function closeModal (){
     check.parentElement.lastElementChild.classList.remove('checked')
     localStorage.setItem('item-list', JSON.stringify(itens));
 }
+```
 
-//Modal Barcode calls
+Open barcode modal (barcode icon).
 
+````javascript
 function modalBarcodeCall() {
     let modal = document.querySelector('.modal-barcode');
     modal.style.display = 'block';
 }
+````
 
+Close barcode modal (barcode icon).
+
+```javascript
 function closeModalBarcode() {
     let modal = document.querySelector('.modal-barcode');
     result.innerText = '';
     modal.style.display = 'none';
 }
+```
 
-// Functions
 
+
+### functions
+
+- **Adding a new item to items list**
+
+​																From the inputs.
+```javascript
+itemInput.addEventListener('keyup', e => {
+    let userItem = itemInput.value.trim();
+    let userQuant = quantInput.value.trim();
+    if(e.key == 'Enter' && userItem){
+        if(userQuant > 0){
+            if(!itens){
+                itens = [];
+            }
+            itemInput.value = '';
+            quantInput.value = '';
+        
+            let itemInfo = {name: userItem, un: userQuant, status:'pending', price: 0.00};
+            itens.push(itemInfo);
+            localStorage.setItem('item-list', JSON.stringify(itens));
+            showItem('all');
+            showTotal();
+        }else{
+            alert ('Invalid quantity!')
+        }
+    }
+});
+```
+
+​														From barcode reader.
+
+```javascript
 function addByBarcode(){
     console.log(result.textContent);
     if(result.textContent == ''){
@@ -226,7 +414,13 @@ function addByBarcode(){
         closeModalBarcode();
     }
 }
+```
 
+- **Updating an item status and price**
+
+​														Quantity and price.
+
+```javascript
 function priceChange(){
     let userQuant = quantModalInput.value.trim();
     let userPrice = priceModalInput.value.trim();
@@ -266,7 +460,11 @@ function priceChange(){
     }
     
 }
+```
 
+​																		Status.
+
+```javascript
 function updatePrice(selectedItem) {
     //console.log(selectedItem);
 
@@ -285,7 +483,11 @@ function updatePrice(selectedItem) {
     showItem('all');
     showTotal();
 }
+```
 
+- **Deleting item by id (id from checkbox)**
+
+```javascript
 function deleteItem(deleteId) {
     //console.log(deleteId);
     itens.splice(deleteId, 1);
@@ -293,9 +495,15 @@ function deleteItem(deleteId) {
     showItem('all');
     showTotal();
 }
+```
 
-//  Ester eggs
 
+
+### ester eggs
+
+Selectors.
+
+```javascript
 const recomendations = document.getElementById('nav-recomendations');
 const history = document.getElementById('nav-history');
 
@@ -303,7 +511,13 @@ const notifications = document.getElementById('notification');
 
 const exitBtn = document.getElementById('exit-menu');
 const settingsBtn = document.getElementById('settings-menu');
+```
 
+
+
+Alerts.
+
+```javascript
 recomendations.addEventListener('click', () => {
     alert('We don\'t have any recomendations yet!');
 });
@@ -324,3 +538,43 @@ exitBtn.addEventListener('click', () => {
 settingsBtn.addEventListener('click', () => {
     alert('This is not ready... We are working on it! ;)');
 });
+```
+
+
+
+
+
+### bar code lib 
+
+Init.
+
+```javascript
+Quagga.init({
+        inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector('#cam')
+        },
+        decoder: {
+            readers: ["code_128_reader"]
+        }
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            return
+        }
+        console.log("Initialization finished. Ready to start");
+        Quagga.start();
+    });
+```
+
+OnDetected (take the barcode data).
+
+```javascript
+ Quagga.onDetected(function (data){
+        document.querySelector('.modal-barcode #result').innerHTML = data.codeResult.code;
+    });
+```
+
+
+

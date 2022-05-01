@@ -60,7 +60,7 @@ body {
     height: 8vh;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     padding: 25px;
     color: var(--secundaryColor);
@@ -70,7 +70,7 @@ body {
 .header-container span {
     font-size: 1.4rem;
     font-weight: bold;
-    margin-right: 75%;
+    color: white;
 }
 
 .header-container i {
@@ -79,6 +79,23 @@ body {
 
 .fa-solid .fa-bars .active-hamburger {
     color: var(--fontColor);
+}
+
+.enterprise {
+    margin-right: 75%;
+    display: flex;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+}
+
+.enterprise #logo {
+    height: 7vh;
+    margin-bottom: 8px;
+}
+
+.enterprise span {
+    margin-left: -33px;
 }
 
 /*
@@ -291,13 +308,18 @@ footer hr {
     display: flex;
     justify-content: center;
     position: absolute;
-    margin-top: 70px;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .content-total p{
     color: var(--thirdColor);
     font-size: 2rem;
     font-weight: bold;
+}
+
+#total-un {
+    font-size: 1.2rem;
 }
 
 /*
@@ -492,7 +514,9 @@ footer hr {
 }
 
 .text-obs {
+    margin-left: 40px;
     text-align: center;
+    width: 80%;
 }
 
 #barcode:hover {

@@ -9,17 +9,18 @@
     <script src="./js/app.js" defer></script>
     <script src="./lib/quagga.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 
     <!-- Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Quicksand&display=swap" rel="stylesheet">
 
     <!-- Font Awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>DevInHouse</title>
+    <title>DEVinShop - Itens List</title>
 </head>
 
 <body onload=getColorMode()>
@@ -28,9 +29,12 @@
     <header>
         <div class="header-container">
             <i class="fa-solid fa-bars" id="hamburguer"></i>
-            <span> DEVinShop</span>
+            <div class="enterprise">
+                <img src="./img/logo.png" id="logo">
+                <span> EVinShop</span>
+            </div>
             <div class="user-config">
-                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-bell" id="notification"></i>
                 <div class="user-settings">
                     <i class="fa-solid fa-user"></i>
                     <ul class="user-menu">
@@ -79,6 +83,7 @@
     <!-- Total -->
     <div class="container-total">
         <div class="content-total">
+            <p id="total-un">Itens un. 00</p>
             <p id="total">Total: 0,00</p>
         </div>
     </div>
@@ -87,7 +92,7 @@
     <div class="wrapper">
         <div class="item-input">
             <i class="fa-solid fa-arrow-up-1-9"></i>
-            <input class="quant" type="number" placeholder="Add a quantity (No required)">
+            <input class="quant" type="number" placeholder="Add a quantity (required)">
         </div>
         <div class="item-input">
             <i class="fa-solid fa-bars-staggered"></i>
@@ -95,7 +100,8 @@
         </div>
         <div class="text-obs">
             <p>OBS:</p>
-            <p>When inserted the item name, press "Enter" to add!</p>
+            <p>If already inserted the quantity and item</p>
+            <p>Press "Enter" to add to the list!</p>
         </div>
         
         <div class="controls">
@@ -155,33 +161,31 @@
         <span> Developed by: <strong> Matheus Filipe Freitas</strong> - 2022 </span>
     </footer>
 
-
-    <!-- Bar code reader-->
+    <!-- Barcode Reader -->
     <script>
-            Quagga.init({
-            inputStream: {
-                name: "Live",
-                type: "LiveStream",
-                target: document.querySelector('#cam')    // Or '#yourElement' (optional)
-            },
-            decoder: {
-                readers: ["code_128_reader"]
-            }
-        }, function (err) {
-            if (err) {
-                console.log(err);
-                return
-            }
-            console.log("Initialization finished. Ready to start");
-            Quagga.start();
-        });
+           Quagga.init({
+        inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector('#cam')
+        },
+        decoder: {
+            readers: ["code_128_reader"]
+        }
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            return
+        }
+        console.log("Initialization finished. Ready to start");
+        Quagga.start();
+    });
 
-        Quagga.onDetected(function (data){
-            //console.log(data);
+    Quagga.onDetected(function (data){
+        //console.log(data);
 
-            document.querySelector('.modal-barcode #result').innerHTML = data.codeResult.code;
-        })
-
+        document.querySelector('.modal-barcode #result').innerHTML = data.codeResult.code;
+    });
     </script>
 </body>
 
