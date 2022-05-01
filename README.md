@@ -10,7 +10,7 @@
   <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
 </div>
 <br>
-_OBS:_
+OBS:
 - The library used for barcode reader is QuaggaJS. [link for the website](https://serratus.github.io/quaggaJS/)
 - Site used for generate barcodes: [link](https://barcode.tec-it.com/en/)
 
