@@ -544,7 +544,7 @@ settingsBtn.addEventListener('click', () => {
 
 
 
-### bar code lib 
+### bar code reader lib 
 
 Init.
 
