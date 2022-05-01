@@ -39,7 +39,7 @@
 
 ​	You can change the theme at user-menu. Just put your mouse at the user icon.
 
-![akt text](D:\webProjects\DevInHouse\img\documentation\5.png)
+![akt text](https://github.com/MatheusFilipeFreitas/DEVinShop/blob/master/img/documentation/5.png)
 
 
 
